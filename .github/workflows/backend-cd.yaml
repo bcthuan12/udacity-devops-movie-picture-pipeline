@@ -81,7 +81,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ vars.FRONTEND_REPO}}
+          ECR_REPOSITORY: ${{ vars.BACKEND_REPO}}
           IMAGE_TAG: latest
         run: |
           # Build a docker container and
