@@ -93,7 +93,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
 
       - name: Update k8s config
-        run: aws eks update-kubeconfig
+        run: aws eks update-kubeconfig --name=cluster
 
       - name: Deploy using kustomize
         env:
