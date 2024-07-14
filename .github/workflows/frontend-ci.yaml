@@ -38,7 +38,7 @@ jobs:
       - name: List dir
         run: ls
       - name: CD to frontend folder
-        run: cd frontend
+        run: cd starter/frontend
       - name: Lint
         run: npm run lint
 
