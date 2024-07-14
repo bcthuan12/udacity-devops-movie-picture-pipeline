@@ -1,11 +1,8 @@
-name: Backend CI pipeline
+name: Backend Continuous Integration
 on:
   workflow_dispatch:
   # Automatic trigger on pull request events targeting the main branch
   pull_request:
-    branches:
-      - main
-  push:
     branches:
       - main
 
@@ -71,7 +68,7 @@ jobs:
         with:
           path: ~/.local/share/virtualenvs
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-      - name: Lint
+      - name: Test
         working-directory: ./starter/backend
         run: |
           pipenv install
