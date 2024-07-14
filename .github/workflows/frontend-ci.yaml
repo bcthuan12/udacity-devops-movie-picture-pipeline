@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   lint-job:
-    name: LINT JOB
+    name: LINT
     runs-on: ubuntu-latest
 
     steps:
