@@ -104,4 +104,5 @@ jobs:
         run: |
           kustomize edit set image backend=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           kustomize build
-          kubectl apply -f -
+          kubectl apply -f service.yaml
+          kubectl apply -f deployment.yaml
