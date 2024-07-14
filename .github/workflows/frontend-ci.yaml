@@ -45,7 +45,8 @@ jobs:
           npm ci
           npm test
   build-job:
-    name: BUILD & PUSH FRONTEND IMAGE
+    name: BUILD
+    needs: [lint-job, test-job]
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials
@@ -62,13 +63,17 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ vars.FRONTEND_REPO}}
+          IMAGE_TAG: latest
         run: |
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build -t $FRONTEND_ECR:$IMAGE_TAG starter/frontend
-          docker push $FRONTEND_ECR:$IMAGE_TAG
-          echo "image=$FRONTEND_ECR:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          docker build -t $ECR_REGISTRY/$FRONTEND_REPO:$IMAGE_TAG starter/frontend
+          docker push $ECR_REGISTRY/$FRONTEND_REPO:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$FRONTEND_REPO:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
       # - name: Fill in the new image ID in the Amazon ECS task definition
       #   id: task-def
