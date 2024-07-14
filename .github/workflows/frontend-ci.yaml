@@ -68,6 +68,6 @@ jobs:
         with:
           context: ./starter/frontend
           file: ./starter/frontend/Dockerfile
-          tags: ${{ steps.login-ecr.outputs.registry }}/${{ vars.FRONTEND_REPO}}:latest
+          tags: ${{ steps.login-ecr.outputs.registry }}/${{ vars.FRONTEND_REPO}}:0.0.1
           load: true
           push: true

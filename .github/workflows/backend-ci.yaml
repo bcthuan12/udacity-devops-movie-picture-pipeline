@@ -82,6 +82,6 @@ jobs:
         with:
           context: ./starter/backend
           file: ./starter/backend/Dockerfile
-          tags: ${{ steps.login-ecr.outputs.registry }}/${{ vars.BACKEND_REPO}}:latest
+          tags: ${{ steps.login-ecr.outputs.registry }}/${{ vars.BACKEND_REPO}}:0.0.1
           load: true
           push: true
