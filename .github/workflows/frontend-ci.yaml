@@ -35,12 +35,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: List dir
-        run: ls
-      - name: CD to frontend folder
-        run: cd starter/frontend
       - name: Lint
         run: npm run lint
+        working-directory: ./starter/frontend
 
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v1
