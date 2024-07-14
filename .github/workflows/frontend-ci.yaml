@@ -52,6 +52,10 @@ jobs:
     needs: [lint-job, test-job]
     runs-on: ubuntu-latest
     steps:
+      - name: List files in the repository
+        run: |
+          ls
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
